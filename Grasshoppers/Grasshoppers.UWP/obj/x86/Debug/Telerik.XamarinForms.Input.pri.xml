@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Telerik.XamarinForms.Input" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Telerik.XamarinForms.Input">
+				<NamedResource name="Telerik.XamarinForms.Input.xr.xml" uri="ms-resource://Telerik.XamarinForms.Input/Files/Telerik.XamarinForms.Input/Telerik.XamarinForms.Input.xr.xml">
+					<Candidate type="Path">
+						<Value>Telerik.XamarinForms.Input\Telerik.XamarinForms.Input.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Resources">
+					<NamedResource name="InputControlsTemplatesUWP.xbf" uri="ms-resource://Telerik.XamarinForms.Input/Files/Telerik.XamarinForms.Input/Resources/InputControlsTemplatesUWP.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

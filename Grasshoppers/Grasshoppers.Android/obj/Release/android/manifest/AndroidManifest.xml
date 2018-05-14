@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.companyname.Grasshoppers" android:installLocation="auto" android:versionCode="2" android:versionName="2.0">
+  <!--suppress UsesMinSdkAttributes-->
+  <uses-sdk android:minSdkVersion="15" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <application android:label="Grasshoppers.Android" android:icon="@drawable/grassicon" android:debuggable="false" android:name="android.app.Application" android:allowBackup="true">
+    <activity android:configChanges="screenSize" android:icon="@drawable/grassicon" android:label="Grass" android:screenOrientation="portrait" android:theme="@style/splashscreen" android:name="md57c971da7e9b8df4bc40e0753d3ec121b.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <receiver android:enabled="true" android:label="Connectivity Plugin Broadcast Receiver" android:name="md592d74be4bac08a7af63848ae15d2f86e.ConnectivityChangeBroadcastReceiver" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.Grasshoppers.mono.MonoRuntimeProvider.__mono_init__" />
+    <meta-data android:name="android.arch.lifecycle.VERSION" android:value="27.0.0-SNAPSHOT" />
+    <meta-data android:name="android.support.VERSION" android:value="26.1.0" />
+  </application>
+</manifest>

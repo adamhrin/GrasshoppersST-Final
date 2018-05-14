@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.BrigadePage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             Title="Brigáda">
+
+    <!--
+    <ContentPage.BindingContext>
+        <ViewModels:BrigadesViewModel/>
+    </ContentPage.BindingContext>
+    -->
+
+    <ScrollView>
+        <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Padding="16, 16, 16, 16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="EditDeleteBrigadeGrid"
+                  Grid.Row="0"
+                  Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                        Clicked="btnEditBrigade_Clicked">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_mode_edit.png"
+                                    Android="ic_mode_edit_black_24dp.png"
+                                    WinPhone="Images/ic_mode_edit.png">
+                        </OnPlatform>
+                    </Button.Image>
+                </Button>
+                <Button Grid.Column="1" 
+                        BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                        Clicked="btnDeleteBrigade_Clicked">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_delete.png"
+                                    Android="ic_delete_black_24dp.png"
+                                    WinPhone="Images/ic_delete.png">
+                        </OnPlatform>
+                    </Button.Image>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedBrigade.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_label.png"
+                                        Android="ic_label_black_24dp.png"
+                                        WinPhone="Images/ic_label.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Label Text="{Binding SelectedBrigadeLeague.Name, Mode=TwoWay}" 
+                           Grid.Column="1" VerticalOptions="Center"
+                           Style="{StaticResource BigFontSize}"/>
+                </Grid>
+            </Grid>
+            
+            <Grid Grid.Row="2" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedBrigade.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_place.png"
+                                        Android="ic_place_black_24dp.png"
+                                        WinPhone="Images/ic_place.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Label Text="{Binding SelectedBrigadeLocation.Name, Mode=TwoWay}"
+                           Grid.Column="1" VerticalOptions="Center"
+                           Style="{StaticResource BigFontSize}"/>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="3" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedBrigade.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_access_time.png"
+                                        Android="ic_access_time_black_24dp.png"
+                                        WinPhone="Images/ic_access_time.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Label Text="{Binding SelectedBrigade.StartDateString, Mode=TwoWay}" 
+                           Grid.Column="1" VerticalOptions="Center"
+                           Style="{StaticResource BigFontSize}"/>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="4" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedBrigade.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                        iOS="ic_hourglass_full.png"
+                        Android="ic_hourglass_full_black_24dp.png"
+                        WinPhone="Images/ic_hourglass_full.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Label Text="{Binding SelectedBrigade.FromToString, Mode=TwoWay}" 
+                           Grid.Column="1" VerticalOptions="Center"
+                           Style="{StaticResource BigFontSize}"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"/>
+            </Grid>
+
+            <Grid Grid.Row="6" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedBrigade.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="FileImageSource"
+                                            iOS="ic_group.png"
+                                            Android="ic_group_black_24dp.png"
+                                            WinPhone="Images/ic_group.png">
+                                </OnPlatform>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="Pozície" VerticalOptions="Center" Grid.Column="1"
+                               Style="{StaticResource BigFontSize}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" >
+                        <ListView x:Name="PositionsListView"
+                                ItemsSource="{Binding SelectedBrigadePositions}"
+                                HasUnevenRows="True"
+                                HeightRequest="{Binding PositionsListViewHeight}"
+                                SeparatorVisibility="None">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource GridRowBackgroundColor}">
+                                        <StackLayout>
+                                            <Grid BackgroundColor="{Binding IsRegisteredPlayerColor}" Margin="0,12,0,12"  Padding="8,8,8,8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Label Grid.Row="0" 
+                                                           Text="{Binding Name}"
+                                                           TextColor="Black"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource MediumFontSize}"/>
+                                                    <Label Grid.Row="1" 
+                                                           Text="{Binding NumberOfHoursString}"
+                                                           TextColor="{StaticResource LightTextColor}"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource SmallFontSize}"/>
+                                                    <Label  Grid.Row="2"
+                                                            Text="{Binding RegisteredPlayer.Name}"
+                                                            TextColor="{StaticResource LightTextColor}"
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            Style="{StaticResource SmallFontSize}"/>
+                                                </Grid>
+                                                <Button BackgroundColor="{StaticResource AcceptGreenColor}"
+                                                        Grid.Column="1"
+                                                        Text="Prihlásiť"
+                                                        IsVisible="{Binding IsRegisterBtnVisible}"
+                                                        Margin="0, 4, 0, 4"
+                                                        Clicked="btnRegisterPosition_Clicked">
+                                                </Button>
+                                                <Button BackgroundColor="{StaticResource DeclineRedColor}"
+                                                        Grid.Column="1"
+                                                        Text="Odhlásiť"
+                                                        IsVisible="{Binding IsUnregisterBtnVisible}"
+                                                        Margin="0, 4, 0, 4"
+                                                        Clicked="btnUnregisterPosition_Clicked">
+                                                </Button>
+                                            </Grid>
+                                        </StackLayout>
+                                    </customControls:ExtendedViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

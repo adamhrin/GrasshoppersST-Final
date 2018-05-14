@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.EditPositionsPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             Title="Správa brigádnických pozícií">
+
+    <ContentPage.BindingContext>
+        <ViewModels:PositionsViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout BackgroundColor="{StaticResource PageBackgroundColor}">
+        <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Padding="8, 8, 8, 8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{StaticResource TrainingColor}" />
+                <Grid Padding="8, 8, 8, 8" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_group_add.png"
+                                        Android="ic_group_add_black_24dp.png"
+                                        WinPhone="Images/ic_group_add.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Entry Text="{Binding NewComponent.Name}" 
+                           Placeholder="Nová pozícia" 
+                           VerticalOptions="Center" 
+                           Grid.Row="0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Text="Hodín: "
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource MediumFontSize}"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding NewComponentNumberOfHours, Mode=TwoWay}"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource MediumFontSize}"/>
+                            <Stepper Grid.Column="2" 
+                                     Value="{Binding NewComponentNumberOfHours, Mode=TwoWay}"
+                                     Increment="1"
+                                     Minimum="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="CenterAndExpand"/>
+                        </Grid>
+                    </Grid>
+                    <Button IsVisible="{Binding IsNotBusy}"
+                            BackgroundColor="{StaticResource PageBackgroundColor}" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            Grid.Column="2"
+                            Clicked="btnAddPosition_Clicked">
+                        <Button.Image>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_add.png"
+                                        Android="ic_add_black_24dp.png"
+                                        WinPhone="Images/ic_add.png">
+                            </OnPlatform>
+                        </Button.Image>
+                    </Button>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                       IsVisible="{Binding IsBusy}" Grid.Column="3"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <ListView x:Name="PositionsListView"
+                  ItemsSource="{Binding AllComponents}"
+                  HasUnevenRows="True"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="PositionsListView_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource PageBackgroundColor}">
+                        <StackLayout>
+                            <Grid BackgroundColor="{StaticResource GridRowBackgroundColor}" Margin="12,12,12,12"  Padding="8,8,8,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}"
+                                        TextColor="Black"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center"
+                                       Style="{StaticResource MediumFontSize}"/>
+                                <Label Text="{Binding NumberOfHoursString}"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Grid.Column="1"
+                                       Style="{StaticResource SmallFontSize}">
+                                </Label>
+                                <Button Grid.Column="2" 
+                                        BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                        Clicked="btnEditPosition_Clicked">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource"
+                                                    iOS="ic_mode_edit.png"
+                                                    Android="ic_mode_edit_black_24dp.png"
+                                                    WinPhone="Images/ic_mode_edit.png">
+                                        </OnPlatform>
+                                    </Button.Image>
+                                </Button>
+                                <Button Grid.Column="3" 
+                                        BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                        Clicked="btnDeletePosition_Clicked">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource"
+                                                    iOS="ic_delete.png"
+                                                    Android="ic_delete_black_24dp.png"
+                                                    WinPhone="Images/ic_delete.png">
+                                        </OnPlatform>
+                                    </Button.Image>
+                                </Button>
+                            </Grid>
+                        </StackLayout>
+                    </customControls:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

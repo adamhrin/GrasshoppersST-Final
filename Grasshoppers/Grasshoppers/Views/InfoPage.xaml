@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.InfoPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers">
+
+    <ContentPage.Title>
+        <OnPlatform x:TypeArguments="x:String"
+                    iOS="Oznamy"
+                    WinPhone="Oznamy">
+        </OnPlatform>
+    </ContentPage.Title>
+    <ContentPage.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource"
+                    iOS="ic_info_outline_white.png"
+                    Android="ic_info_outline_white_24dp.png"
+                    WinPhone="Images/ic_info_outline_white.png">
+        </OnPlatform>
+    </ContentPage.Icon>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"/>
+        </Grid>
+        
+        <StackLayout Grid.Row="1">
+            <ListView ItemsSource="{Binding Info}" 
+                      Grid.Row="1" 
+                      ItemTapped="InfoListView_ItemTapped"
+                      x:Name="InfoListView"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None"
+                      IsPullToRefreshEnabled="True"
+                      Refreshing="InfoListView_Refreshing">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource PageBackgroundColor}">
+                            <StackLayout>
+                                <Grid Padding="2,2,2,2" BackgroundColor="Transparent">
+                                    <Grid Grid.ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid BackgroundColor="{Binding LeadBorderColor}"/>
+                                        <Grid Grid.Column="1"
+                                          BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                          Padding="8,12,12,12">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label Grid.Row="0"
+                                                           Text="{Binding Creator.Name}"
+                                                           TextColor="{StaticResource LightTextColor}"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource MediumFontSize}"/>
+                                                    <Label Grid.Row="1"
+                                                           Text="{Binding CreationDateTimeString}"
+                                                           TextColor="{StaticResource LightTextColor}"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource SmallFontSize}"/>
+                                                    <Label Grid.Row="2"
+                                                           Text="{Binding LastUpdateDateTimeString}"
+                                                           TextColor="{StaticResource LightTextColor}"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource SmallFontSize}"
+                                                           IsVisible="{Binding WasUpdated}"/>
+                                                </Grid>
+                                                <Grid Grid.Column="1" IsVisible="{Binding IsAdmin}"
+                                                      HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                                      Padding="8,0,8,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Grid.Column="0" 
+                                                           VerticalOptions="Center" HorizontalOptions="End">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                Tapped="EditInfo_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                        <Image.Source>
+                                                            <OnPlatform x:TypeArguments="FileImageSource"
+                                                                        iOS="ic_mode_edit.png"
+                                                                        Android="ic_mode_edit_black_24dp.png"
+                                                                        WinPhone="Images/ic_mode_edit.png">
+                                                            </OnPlatform>
+                                                        </Image.Source>
+                                                    </Image>
+                                                    <Image Grid.Column="1" 
+                                                           VerticalOptions="Center" HorizontalOptions="End">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                Tapped="DeleteInfo_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                        <Image.Source>
+                                                            <OnPlatform x:TypeArguments="FileImageSource"
+                                                                        iOS="ic_delete.png"
+                                                                        Android="ic_delete_black_24dp.png"
+                                                                        WinPhone="Images/ic_delete.png">
+                                                            </OnPlatform>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Grid.Row="1" BackgroundColor="{StaticResource PageBackgroundColor}"
+                                                  Padding="4,4,4,4">
+                                                <Label Text="{Binding Content}"
+                                                       Style="{StaticResource MediumBigFontSize}"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       IsVisible="{Binding IsWholeContentVisible}"/>
+                                                <Label Text="{Binding ShortContent}"
+                                                       Style="{StaticResource MediumBigFontSize}"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       IsVisible="{Binding IsShortContentVisible}"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </StackLayout>
+                        </customControls:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
+</ContentPage>

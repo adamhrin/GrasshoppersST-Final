@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.PlayerAccountPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             Title="Správa účtu">
+
+    <ContentPage.BindingContext>
+        <ViewModels:PlayersViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid BackgroundColor="{StaticResource GridRowBackgroundColor}" Padding="8, 8, 8, 8" Margin="8, 8, 8, 8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid Padding="16,8,16,8" BackgroundColor="Transparent">
+                    <Grid Grid.ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid BackgroundColor="{StaticResource MatchColor}" />
+                        <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Grid.Column="1" Padding="6,6,6,6">
+                            <Label Text="{Binding SelectedPlayer.NumOfBrigadeHoursString}"
+                                   TextColor="Black"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource MediumFontSize}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.Email}"
+                           Placeholder="Email (povinné)"/>
+                </Grid>
+            </Grid>
+            
+            <!--
+            <Grid Grid.Row="2">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.Password}"
+                           Placeholder="Heslo (povinné)"
+                           IsPassword="True"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.ConfirmPassword}"
+                           Placeholder="Potvrď heslo (povinné)"
+                           IsPassword="True"/>
+                </Grid>
+            </Grid>
+            -->
+
+            <Grid Grid.Row="2">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.Firstname}"
+                           Placeholder="Meno"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.Nick}"
+                           Placeholder="Prezývka"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.Surname}"
+                           Placeholder="Priezvisko"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding SelectedPlayer.Number}"
+                           Placeholder="Číslo dresu"
+                           Keyboard="Numeric"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="6">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"/>
+            </Grid>
+
+            <Grid Grid.Row="7" Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                            iOS="ic_group.png"
+                                            Android="ic_group_black_24dp.png"
+                                            WinPhone="Images/ic_group.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Label Text="Kategórie" VerticalOptions="Center" Grid.Column="1"
+                               Style="{StaticResource BigFontSize}"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <ListView x:Name="AllCategoriesListView"
+                          ItemsSource="{Binding AllCategories}"
+                          HasUnevenRows="True"
+                          HeightRequest="{Binding AllCategoriesListViewHeight}"
+                          SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource GridRowBackgroundColor}">
+                                    <StackLayout>
+                                        <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Margin="0,12,0,12"  Padding="8,8,8,8">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding Name}"
+                                               TextColor="Black"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               Style="{StaticResource MediumFontSize}">
+                                            </Label>
+                                            <Switch IsToggled="{Binding IsChosenForPlayer, Mode=TwoWay}" 
+                                                Grid.Column="1"
+                                                HorizontalOptions="EndAndExpand"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </customControls:ExtendedViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="8" Padding="8, 8, 8, 8">
+                <Button 
+                        BackgroundColor="{StaticResource PageBackgroundColor}"
+                        Command="{Binding PutPlayerCommand}"
+                        Text="Uložiť"/>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+
+</ContentPage>

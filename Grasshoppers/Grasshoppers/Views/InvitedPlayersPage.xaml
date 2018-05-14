@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.InvitedPlayersPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:listView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             Title="Pozvaní hráči">
+    
+    <ContentPage.BindingContext>
+        <ViewModels:TrainingsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ListView ItemsSource="{Binding SelectedTraining.InvitedPlayers}"
+              BackgroundColor="{StaticResource PageBackgroundColor}"
+              SeparatorVisibility="None"
+              HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource PageBackgroundColor}">
+                    <Grid Padding="16,8,16,8" BackgroundColor="Transparent">
+                        <Grid Grid.ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid BackgroundColor="{StaticResource TrainingColor}" />
+                            <Grid Grid.Column="1"
+                                          BackgroundColor="{Binding AcceptsColor}"
+                                          Padding="6,6,6,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}"
+                                       TextColor="Black"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource MediumFontSize}"/>
+                                <Label Text="{Binding Number}"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Grid.Column="1"
+                                       Style="{StaticResource MediumFontSize}"/>
+                                <Image Grid.Column="2" x:Name="acceptsImg">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource">
+                                            <OnPlatform.iOS>
+                                                <FileImageSource File="{Binding AcceptsIconIOSString}"/>
+                                            </OnPlatform.iOS>
+                                            <OnPlatform.Android>
+                                                <FileImageSource File="{Binding AcceptsIconAndroidString}"/>
+                                            </OnPlatform.Android>
+                                            <OnPlatform.WinPhone>
+                                                <FileImageSource File="{Binding AcceptsIconWindowsString}"/>
+                                            </OnPlatform.WinPhone>
+                                        </OnPlatform>
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </customControls:ExtendedViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

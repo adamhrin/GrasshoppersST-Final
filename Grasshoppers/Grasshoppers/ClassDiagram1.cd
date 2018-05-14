@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Grasshoppers.App" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAgAEAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.PlayersPage" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAgAAAAAAAAAAAAAAACAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Views\PlayersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Converters.UnixDateTimeConverter" Collapsed="true">
+    <Position X="15" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\UnixDateTimeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.CustomControls.ExpandableEditor" Collapsed="true">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>CustomControls\ExpandableEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.CustomControls.ExtendedViewCell" Collapsed="true">
+    <Position X="20.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACEA=</HashCode>
+      <FileName>CustomControls\ExtendedViewCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Extensions.Extensions" Collapsed="true">
+    <Position X="22" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Extensions\Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Factories.ViewsFactory" Collapsed="true">
+    <Position X="18.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\ViewsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Helpers.Settings" Collapsed="true">
+    <Position X="22" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAIAAAAAAAACAAAAgAAAQAA=</HashCode>
+      <FileName>Helpers\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Helpers.UnixDateTimeHelper" Collapsed="true">
+    <Position X="16.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Helpers\UnixDateTimeHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Initializers.Connectivity" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAIAAAIAAAAAAEAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Initializers\Connectivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Initializers.Initializer" Collapsed="true">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAwCAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Initializers\Initializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Brigade" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAEgAAIAAAAAAAEAQAAAACCAABAAAAA=</HashCode>
+      <FileName>Models\Brigade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Category" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Component" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Event" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAABAEAAQAAAAAAgIAAgBCgAACABwEAAGhA=</HashCode>
+      <FileName>Models\Event.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Grasshoppers.Models.Goal" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAEAAAgAAgAgAgAAAgAAACAAAAAAAAAAAAAAAEQI=</HashCode>
+      <FileName>Models\Goal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Info" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAgIEAAAgIAECAAIQiAAIkCgAECAAAAAAIAA=</HashCode>
+      <FileName>Models\Info.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.Models.League" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\League.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Location" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Match" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAGAABSgANABAAAAAIAAAgACAQAAAAAACCQABAACgA=</HashCode>
+      <FileName>Models\Match.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Player" Collapsed="true">
+    <Position X="20.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQFAgACgAAAEAAEACQAYADBAxEAACAAAAACIAIAQ=</HashCode>
+      <FileName>Models\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Position" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAQAAgEAQAAAAAQAAAQAhQAAAAAAQCAAAAAA=</HashCode>
+      <FileName>Models\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Models.Training" Collapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGQAEIAAAAAACAAAIAQAAAIAAQEBAAACAgAAgAAAA=</HashCode>
+      <FileName>Models\Training.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.RestClient.RestClient&lt;T&gt;" Collapsed="true">
+    <Position X="18.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABAACIgBABAAAAAAAAAAgAAAAAAAgAAEAIAAAAIA=</HashCode>
+      <FileName>RestClient\RestClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Services.BrigadesServices" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAACEAAAAAAAAABAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\BrigadesServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Services.CategoriesServices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAEAAAAAAAIA=</HashCode>
+      <FileName>Services\CategoriesServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.Services.InfoServices" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAQAAQAAAAAAAAEAAAAIA=</HashCode>
+      <FileName>Services\InfoServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Services.LeaguesServices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAEAAAAAAAIA=</HashCode>
+      <FileName>Services\LeaguesServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.Services.LocationsServices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAEAAAAAAAIA=</HashCode>
+      <FileName>Services\LocationsServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.Services.MatchesServices" Collapsed="true">
+    <Position X="15" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAACAAAAAQEABAAAAAQAIAAAIAAAAAAJA=</HashCode>
+      <FileName>Services\MatchesServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Services.PlayersServices" Collapsed="true">
+    <Position X="11.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAABAAAACAAAAgBAAIAAAACAAAAAAIEAAIA=</HashCode>
+      <FileName>Services\PlayersServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Services.PositionsServices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAgAAAAAAIAAAAEAAAAAAAAAAAAAMAAAAAAAIA=</HashCode>
+      <FileName>Services\PositionsServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.Services.TrainingsServices" Collapsed="true">
+    <Position X="11.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAIAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\TrainingsServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.BrigadesViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQARAyQAAMACgBBgIQAAAARAjUSAUCgAgMgAEKRAwAA=</HashCode>
+      <FileName>ViewModels\BrigadesViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.CategoriesViewModel" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.ComponentsViewModel&lt;T, U&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEgAAAAAAAIAMAAAAARBiAAAgAABABAgAAAAQAA=</HashCode>
+      <FileName>ViewModels\ComponentsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.EventsViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAAAgACABAAAIAQAQARAggAAAAAAIAgAAAAAAAA=</HashCode>
+      <FileName>ViewModels\EventsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.InfoViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYQEAIBAAAAAAAAIAGBIERAiAAACAAAAAAgAFAAQAA=</HashCode>
+      <FileName>ViewModels\InfoViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.LeaguesViewModel" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\LeaguesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.LocationsViewModel" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\LocationsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.MatchesViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jRIAIBYAAgAIAABgMSCAAERMjAGgDAgEEAAAQIhJQJA=</HashCode>
+      <FileName>ViewModels\MatchesViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.PlayersViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAUAIBEAAKAIESeACAAARAiABACACAAAAAAACASQA=</HashCode>
+      <FileName>ViewModels\PlayersViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.PositionsViewModel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ViewModels\PositionsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.ViewModels.TrainingsViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQYAEQIBACAAYAQAIACAAARAiAAACChAAQBAAQBBQAA=</HashCode>
+      <FileName>ViewModels\TrainingsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Grasshoppers.Views.AddBrigadePage" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAABAAAAABAAAAAAABAAA=</HashCode>
+      <FileName>Views\AddBrigadePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.AddInfoPage" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Views\AddInfoPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.AddMatchPage" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAABAAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>Views\AddMatchPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.AddPlayerPage" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddPlayerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.AddTrainingPage" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Views\AddTrainingPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.BasePage" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAgQAgAAgAgAAAAAAAAKAAAECAIAAAAAAAA=</HashCode>
+      <FileName>Views\BasePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.BrigadePage" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAACAAgAAAACAgAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\BrigadePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.CalendarPage" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Views\CalendarPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditCategoriesPage" Collapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAQAAgAAAAAAAAAAABAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Views\EditCategoriesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditCategoryPage" Collapsed="true">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditCategoryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditGrassScorePage" Collapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditGrassScorePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditLeaguePage" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditLeaguePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditLeaguesPage" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAgEAAgAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditLeaguesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditLocationPage" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditLocationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditLocationsPage" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAhAAAAACABAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Views\EditLocationsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditOpponentScorePage" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditOpponentScorePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditPlayerPage" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditPlayerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditPositionPage" Collapsed="true">
+    <Position X="20.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditPositionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditPositionsPage" Collapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAAQAwAA=</HashCode>
+      <FileName>Views\EditPositionsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditSelectedBrigadePage" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAABAAAAABAAAAAAABAAA=</HashCode>
+      <FileName>Views\EditSelectedBrigadePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditSelectedInfoPage" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Views\EditSelectedInfoPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditSelectedMatchPage" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAABAAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>Views\EditSelectedMatchPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.EditSelectedTrainingPage" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Views\EditSelectedTrainingPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.InfoPage" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAIAAADCAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InfoPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.InvitedPlayersPage" Collapsed="true">
+    <Position X="20.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InvitedPlayersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.LoginPlayerPage" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Views\LoginPlayerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.MatchDetailPage" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MatchDetailPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.MatchPage" Collapsed="true">
+    <Position X="18.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAABBBIAAgIEAAAACAAAEAAAAAABAIAAAAACAAAAAA=</HashCode>
+      <FileName>Views\MatchPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.PlayerAccountPage" Collapsed="true">
+    <Position X="22" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PlayerAccountPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.RegisterPlayerPage" Collapsed="true">
+    <Position X="16.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\RegisterPlayerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.SearchPlayersPage" Collapsed="true">
+    <Position X="20.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SearchPlayersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grasshoppers.Views.TrainingPage" Collapsed="true">
+    <Position X="9.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAgKAAAAAA=</HashCode>
+      <FileName>Views\TrainingPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Grasshoppers.Interfaces.IMessage" Collapsed="true">
+    <Position X="11.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAA=</HashCode>
+      <FileName>Interfaces\IMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Grasshoppers.Services.IComponentsServices&lt;T&gt;" Collapsed="true">
+    <Position X="9.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Services\IComponentsServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Grasshoppers.Enums.AcceptsTrainingOptions" Collapsed="true">
+    <Position X="9.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\AcceptsTrainingOptions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Grasshoppers.Enums.AdminLevelOptions" Collapsed="true">
+    <Position X="11.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAAQAAAAAAIAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\AdminLevelOptions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

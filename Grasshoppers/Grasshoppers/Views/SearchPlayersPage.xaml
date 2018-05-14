@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.SearchPlayersPage">
+
+    <StackLayout Orientation="Vertical"
+                 Spacing="12">
+
+        <Entry Text="{Binding Keyword, Mode=TwoWay}"/>
+        
+        <Button Text="Vyhľadať"
+                BackgroundColor="Gray"
+                Command="{Binding SearchCommand}" />
+
+        <ListView ItemsSource="{Binding FoundPlayers}"
+                  HasUnevenRows="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="5">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Number}" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding Name}" FontSize="24" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <Label Text="{Binding Email}" FontSize="18" FontAttributes="Italic" Margin="10, 0, 0, 0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.App"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:primitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikCommon="clr-namespace:Telerik.XamarinForms.Common;assembly=Telerik.XamarinForms.Common"
+             xmlns:dataGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid">
+    
+    <Application.Resources>
+        
+        <!-- Application resource dictionary -->
+
+        <ResourceDictionary>
+            <!--
+            <telerikCommon:RadResourceDictionary x:Key="telerikRD">
+                <telerikCommon:RadResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary MergedWith="telerikCommon:BlueResources"/>
+                    <ResourceDictionary MergedWith="telerikInput:TelerikThemeStyles"/>
+                    <ResourceDictionary MergedWith="primitives:TelerikThemeStyles"/>
+                    <ResourceDictionary MergedWith="telerikDataControls:TelerikThemeStyles" />
+                    <ResourceDictionary MergedWith="dataGrid:TelerikThemeStyles"/>
+                </telerikCommon:RadResourceDictionary.MergedDictionaries>
+            </telerikCommon:RadResourceDictionary>
+            -->
+            
+            <Color x:Key="GridRowBackgroundColor">White</Color>
+            <Color x:Key="LightTextColor">#737373</Color>
+
+            <!--Light Gray-->
+            <Color x:Key="PageBackgroundColor">#F7F7F7</Color>
+            <x:String x:Key="PageBackgroundColorString">#F7F7F7</x:String>
+            
+            <!--Orange-->
+            <Color x:Key="BrigadeColor">#ffa500</Color>
+            <x:String x:Key="BrigadeColorString">#ffa500</x:String>
+            <Color x:Key="RegisteredBrigadeColor">#7bff42</Color>
+            <x:String x:Key="RegisteredBrigadeColorString">#7bff42</x:String>
+
+            <!--Brown-->
+            <Color x:Key="MatchColor">#FFA52A2A</Color>
+            <x:String x:Key="MatchColorString">#FFA52A2A</x:String>
+
+            <!--Aqua-->
+            <Color x:Key="TrainingColor">#00ffff</Color>
+            <x:String x:Key="TrainingColorString">#00ffff</x:String>
+
+            <!--Green-->
+            <Color x:Key="AcceptGreenColor">#c6ffad</Color>
+            <x:String x:Key="AcceptGreenColorString">#c6ffad</x:String>
+            
+            <!--Red-->
+            <Color x:Key="DeclineRedColor">#ff9999</Color>
+            <x:String x:Key="DeclineRedColorString">#ff9999</x:String>
+
+            <!--Yellow-->
+            <Color x:Key="InfoColor">#ffff00</Color>
+            <x:String x:Key="InfoColorString">#ffff00</x:String>
+            
+            <!--Red Register-->
+            <Color x:Key="RegisterBtnColor">#e86a6a</Color>
+
+            <!--Orange-->
+            <Color x:Key="LoginBtnColor">#ff8100</Color>
+
+            <Style x:Key="BigFontSize" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    iOS="22"
+                                    Android="24"
+                                    WinPhone="22" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="MediumFontSize" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    iOS="18"
+                                    Android="18"
+                                    WinPhone="18" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="MediumBigFontSize" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    iOS="16"
+                                    Android="16"
+                                    WinPhone="16" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SmallFontSize" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    iOS="14"
+                                    Android="14"
+                                    WinPhone="14" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="XSmallFontSize" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    iOS="12"
+                                    Android="12"
+                                    WinPhone="12" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="RightChevronImg" TargetType="Image">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_chevron_right.png"
+                                    Android="ic_chevron_right_black_24dp.png"
+                                    WinPhone="Images/ic_chevron_right.png">
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>    
+        
+    </Application.Resources>
+</Application>

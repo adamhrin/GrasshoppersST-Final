@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.CalendarPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers">
+<!--
+    <ContentPage.BindingContext>
+        <ViewModels:EventsViewModel/>
+    </ContentPage.BindingContext>
+-->
+    <ContentPage.Title>
+        <OnPlatform x:TypeArguments="x:String"
+                    iOS="Kalendár"
+                    WinPhone="Kalendár">
+        </OnPlatform>
+    </ContentPage.Title>
+
+    <ContentPage.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource"
+                    iOS="ic_event_white.png"
+                    Android="ic_event_white_24dp.png"
+                    WinPhone="Images/ic_event_white.png">
+        </OnPlatform>
+    </ContentPage.Icon>
+
+    <Grid BackgroundColor="{StaticResource PageBackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+        <telerikInput:RadCalendar x:Name="calendar"
+                                  WidthRequest="350"
+                                  AppointmentsSource="{Binding Events}"
+                                  SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+                                  WeekNumbersDisplayMode="Hide"
+                                  StyleClass="TelerikTheme"
+                                  DayNamesDisplayMode="Show">
+        </telerikInput:RadCalendar>
+
+        <Grid Padding="16, 0, 0, 0" Grid.Row="1">
+            <Label Text="{Binding DayLabel}"
+                   TextColor="Black"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Style="{StaticResource MediumFontSize}">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <OnPlatform.iOS>Helvetica</OnPlatform.iOS>
+                        <OnPlatform.Android>sans-serif-light</OnPlatform.Android>
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"/>
+        </Grid>
+
+        <ListView ItemsSource="{Binding SelectedEvents}" 
+                  Grid.Row="3" 
+                  ItemTapped="EventsListView_ItemTapped"
+                  x:Name="EventsListView"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="EventsListView_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource PageBackgroundColor}">
+                        <StackLayout>
+                            <Grid Padding="16,2,16,2" BackgroundColor="Transparent">
+                                <Grid Grid.ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid BackgroundColor="{Binding LeadBorderColor}" />
+                                    <Grid Grid.Column="1"
+                                          BackgroundColor="{Binding ItemBackgroundColor}"
+                                          Padding="8,12,12,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding Title}"
+                                               TextColor="Black"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center">
+                                            <Label.FontSize>
+                                                <OnPlatform x:TypeArguments="x:Double"
+                                                            iOS="12"
+                                                            Android="14"
+                                                            WinPhone="12" />
+                                            </Label.FontSize>
+                                        </Label>
+
+                                        <StackLayout Grid.Column="1"
+                                                     StackLayout.Spacing="0"
+                                                     VerticalOptions="Center">
+                                            <Label Text="{Binding StartTimeString}" TextColor="{StaticResource LightTextColor}" HorizontalOptions="End">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double"
+                                                                iOS="8"
+                                                                Android="10"
+                                                                WinPhone="8" />
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Label Text="{Binding EndTimeString}" TextColor="{StaticResource LightTextColor}" HorizontalOptions="End">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double"
+                                                                iOS="8"
+                                                                Android="10"
+                                                                WinPhone="8" />
+                                                </Label.FontSize>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                    </customControls:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>

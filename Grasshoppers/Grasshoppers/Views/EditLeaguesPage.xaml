@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.EditLeaguesPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             Title="Správa súťaží">
+
+    <ContentPage.BindingContext>
+        <ViewModels:LeaguesViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout BackgroundColor="{StaticResource PageBackgroundColor}">
+        <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Padding="8, 8, 8, 8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{StaticResource TrainingColor}" />
+                <Grid Padding="8, 8, 8, 8" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_plus_one.png"
+                                        Android="ic_plus_one_black_24dp.png"
+                                        WinPhone="Images/ic_plus_one.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Entry Text="{Binding NewComponent.Name}" Placeholder="Nová súťaž" VerticalOptions="Center" Grid.Column="1"/>
+                    <Button IsVisible="{Binding IsNotBusy}"
+                            BackgroundColor="{StaticResource PageBackgroundColor}" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            Grid.Column="2"
+                            Clicked="btnAddLeague_Clicked">
+                        <Button.Image>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_add.png"
+                                        Android="ic_add_black_24dp.png"
+                                        WinPhone="Images/ic_add.png">
+                            </OnPlatform>
+                        </Button.Image>
+                    </Button>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                       IsVisible="{Binding IsBusy}" Grid.Column="3"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <ListView x:Name="LeaguesListView"
+                  ItemsSource="{Binding AllComponents}"
+                  HasUnevenRows="True"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="LeaguesListView_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource PageBackgroundColor}">
+                        <StackLayout>
+                            <Grid BackgroundColor="{StaticResource GridRowBackgroundColor}" Margin="12,12,12,12"  Padding="8,8,8,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}"
+                                       TextColor="Black"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource MediumFontSize}"/>
+                                <Button Grid.Column="1" 
+                                        BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                        Clicked="btnEditLeague_Clicked">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource"
+                                                    iOS="ic_mode_edit.png"
+                                                    Android="ic_mode_edit_black_24dp.png"
+                                                    WinPhone="Images/ic_mode_edit.png">
+                                        </OnPlatform>
+                                    </Button.Image>
+                                </Button>
+                                <Button Grid.Column="2" 
+                                        BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                        Clicked="btnDeleteLeague_Clicked">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource"
+                                                    iOS="ic_delete.png"
+                                                    Android="ic_delete_black_24dp.png"
+                                                    WinPhone="Images/ic_delete.png">
+                                        </OnPlatform>
+                                    </Button.Image>
+                                </Button>
+                            </Grid>
+                        </StackLayout>
+                    </customControls:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

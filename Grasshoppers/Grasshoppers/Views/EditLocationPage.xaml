@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             x:Class="Grasshoppers.Views.EditLocationPage"
+             Title="Zmena názvu lokácie">
+
+    <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Padding="16, 16, 16, 16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid BackgroundColor="{StaticResource TrainingColor}" />
+            <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Image VerticalOptions="Center" HorizontalOptions="Center">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_mode_edit.png"
+                                    Android="ic_mode_edit_black_24dp.png"
+                                    WinPhone="Images/ic_mode_edit.png">
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+                <Entry Text="{Binding SelectedComponent.Name}" Grid.Column="1" VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button BackgroundColor="{StaticResource PageBackgroundColor}" 
+                    Text="Potvrdiť"
+                    Command="{Binding EditComponentCommand}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource"
+                                iOS="ic_check.png"
+                                Android="ic_check_black_24dp.png"
+                                WinPhone="Images/ic_check.png">
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+        </Grid>
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" Grid.Row="2"/>
+    </Grid>
+
+
+</ContentPage>

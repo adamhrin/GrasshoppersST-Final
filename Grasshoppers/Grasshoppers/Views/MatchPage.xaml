@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.MatchPage"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             Title="Zápas">
+
+    <ScrollView>
+        <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Padding="16, 16, 16, 16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="EditDeleteMatchGrid"
+                  Grid.Row="0"
+                  Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                        Clicked="btnEditMatch_Clicked">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_mode_edit.png"
+                                    Android="ic_mode_edit_black_24dp.png"
+                                    WinPhone="Images/ic_mode_edit.png">
+                        </OnPlatform>
+                    </Button.Image>
+                </Button>
+                <Button Grid.Column="1" 
+                        BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                        Clicked="btnDeleteMatch_Clicked">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_delete.png"
+                                    Android="ic_delete_black_24dp.png"
+                                    WinPhone="Images/ic_delete.png">
+                        </OnPlatform>
+                    </Button.Image>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"/>
+            </Grid>
+            
+            <Grid Grid.Row="2" Grid.ColumnSpacing="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!--Tu zacina row s nazvom nasho klubu-->
+                    <Grid Grid.Row="0" Grid.ColumnSpacing="0" HorizontalOptions="FillAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}"/>
+                        <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                            <Label Text="{Binding SelectedMatch.GrassString}" 
+                                   VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                                   Style="{StaticResource BigFontSize}"/>
+                        </Grid>
+                    </Grid>
+                    
+                    <!--Tu je Grid so score grassu-->
+                    <Grid Grid.Row="1" Grid.ColumnSpacing="0" HorizontalOptions="End">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button x:Name="btnAddGoalGrass"
+                                    BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                    Clicked="btnAddGoalGrass_Clicked"
+                                    Margin="0,0,10,0">
+                                <Button.Image>
+                                    <OnPlatform x:TypeArguments="FileImageSource"
+                                                iOS="ic_add.png"
+                                                Android="ic_add_black_24dp.png"
+                                                WinPhone="Images/ic_add.png">
+                                    </OnPlatform>
+                                </Button.Image>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="1" ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}" />
+                            <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                                <Label Text="{Binding SelectedMatch.GrassScore}" 
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource BigFontSize}"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Tu zacina row s nazvom superovho klubu-->
+                    <Grid Grid.Row="0" Grid.ColumnSpacing="0" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                            <Label Text="{Binding SelectedMatch.OpponentAbbreviation}" 
+                                   VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                                   Style="{StaticResource BigFontSize}"/>
+                        </Grid>
+                        <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}" Grid.Column="1"/>
+                    </Grid>
+                    
+                    <!--Tu je Grid so score supera-->
+                    <Grid Grid.Row="1" Grid.ColumnSpacing="0" HorizontalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="4"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                                <Label Text="{Binding SelectedMatch.OpponentScore}"
+                                   VerticalOptions="Center"
+                                   Style="{StaticResource BigFontSize}">
+                                </Label>
+                            </Grid>
+                            <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}"  Grid.Column="1"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnAddGoalOpponent"
+                                    BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                                    Clicked="btnAddGoalOpponent_Clicked"
+                                    Margin="10,0,0,0">
+                                <Button.Image>
+                                    <OnPlatform x:TypeArguments="FileImageSource"
+                                                iOS="ic_add.png"
+                                                Android="ic_add_black_24dp.png"
+                                                WinPhone="Images/ic_add.png">
+                                    </OnPlatform>
+                                </Button.Image>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="FileImageSource"
+                                            iOS="ic_group.png"
+                                            Android="ic_group_black_24dp.png"
+                                            WinPhone="Images/ic_group.png">
+                                </OnPlatform>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="Góly Grasshoppers" 
+                               VerticalOptions="Center" Grid.Column="1"
+                               Style="{StaticResource BigFontSize}"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackLayout>
+                            <ListView x:Name="GrassGoalsListView"
+                                      ItemsSource="{Binding SelectedMatchGrassGoals, Mode=TwoWay}"
+                                      HeightRequest="{Binding GoalsGrassListViewHeight, Mode=TwoWay}"
+                                      HasUnevenRows="True"
+                                      SeparatorVisibility="None"
+                                      IsPullToRefreshEnabled="True"
+                                      Refreshing="GrassGoalsListView_Refreshing">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource GridRowBackgroundColor}">
+                                            <StackLayout>
+                                                <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Margin="0,12,0,12"  Padding="0,0,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="5*"/>
+                                                        <ColumnDefinition Width="20*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" 
+                                                           Text="{Binding Period}"
+                                                           TextColor="Gray"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource MediumBigFontSize}"/>
+                                                    <Label Grid.Column="1" 
+                                                           Text="{Binding TimeString}"
+                                                           TextColor="Black"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource MediumBigFontSize}"/>
+                                                    <Grid Grid.Column="2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Grid.Row="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Text="{Binding Scorer.GoalPlayerString}"
+                                                                   TextColor="Black"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Style="{StaticResource MediumBigFontSize}"/>
+                                                            <Label Text="{Binding Scorer.Number}"
+                                                                   TextColor="{StaticResource LightTextColor}"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Grid.Column="1"
+                                                                   Style="{StaticResource SmallFontSize}"/>
+                                                        </Grid>
+                                                        <Grid Grid.Row="1">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Text="{Binding Assistent.AssistentPlayerString}"
+                                                                   TextColor="{StaticResource LightTextColor}"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Style="{StaticResource SmallFontSize}"/>
+                                                            <Label Text="{Binding Assistent.Number}"
+                                                                   TextColor="{StaticResource LightTextColor}"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Grid.Column="1"
+                                                                   Style="{StaticResource XSmallFontSize}"/>
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Image IsVisible="{Binding IsAdmin}"
+                                                           Grid.Column="3"
+                                                           VerticalOptions="Center" HorizontalOptions="Center">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                Tapped="DeleteGoalGrass_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                        <Image.Source>
+                                                            <OnPlatform x:TypeArguments="FileImageSource"
+                                                                        iOS="ic_close.png"
+                                                                        Android="ic_close_black_24dp.png"
+                                                                        WinPhone="Images/ic_close.png"> 
+                                                            </OnPlatform>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </StackLayout>
+                                        </customControls:ExtendedViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="4" Grid.ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="FileImageSource"
+                                            iOS="ic_group.png"
+                                            Android="ic_group_black_24dp.png"
+                                            WinPhone="Images/ic_group.png">
+                                </OnPlatform>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="{Binding GoalsOpponentString}" VerticalOptions="Center" Grid.Column="1"
+                               Style="{StaticResource BigFontSize}"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackLayout>
+                            <ListView x:Name="OpponentGoalsListView"
+                                      ItemsSource="{Binding SelectedMatchOpponentGoals, Mode=TwoWay}"
+                                      HeightRequest="{Binding GoalsOpponentListViewHeight, Mode=TwoWay}"
+                                      HasUnevenRows="True"
+                                      SeparatorVisibility="None"
+                                      IsPullToRefreshEnabled="True"
+                                      Refreshing="OpponentGoalsListView_Refreshing">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource GridRowBackgroundColor}">
+                                            <StackLayout>
+                                                <Grid BackgroundColor="{StaticResource PageBackgroundColor}" Margin="0,12,0,12"  Padding="4,4,4,4">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="5*"/>
+                                                        <ColumnDefinition Width="20*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" 
+                                                           Text="{Binding Period}"
+                                                           TextColor="Gray"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource MediumBigFontSize}"/>
+                                                    <Label Grid.Column="1" 
+                                                           Text="{Binding TimeString}"
+                                                           TextColor="Black"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Style="{StaticResource MediumBigFontSize}"/>
+                                                    <Grid Grid.Column="2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Grid.Row="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Text="{Binding OpponentScorerString}"
+                                                                   TextColor="Black"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Style="{StaticResource MediumBigFontSize}"/>
+                                                            <Label Text="{Binding Scorer.Number}"
+                                                                   TextColor="Gray"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Grid.Column="1"
+                                                                   Style="{StaticResource SmallFontSize}"/>
+                                                        </Grid>
+                                                        <Grid Grid.Row="1">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Text="{Binding OpponentAssistentString}"
+                                                                   TextColor="Gray"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Style="{StaticResource SmallFontSize}"/>
+                                                            <Label Text="{Binding Assistent.Number}"
+                                                                   TextColor="Gray"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Center"
+                                                                   Grid.Column="1"
+                                                                   Style="{StaticResource XSmallFontSize}"/>
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Image IsVisible="{Binding IsAdmin}"
+                                                           Grid.Column="3" 
+                                                           VerticalOptions="Center" HorizontalOptions="Center">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                Tapped="DeleteGoalOpponent_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                        <Image.Source>
+                                                            <OnPlatform x:TypeArguments="FileImageSource"
+                                                                        iOS="ic_close.png"
+                                                                        Android="ic_close_black_24dp.png"
+                                                                        WinPhone="Images/ic_close.png">
+                                                            </OnPlatform>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </StackLayout>
+                                        </customControls:ExtendedViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="5" Grid.ColumnSpacing="0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                    Tapped="MatchDetail_Tapped"/>
+                </Grid.GestureRecognizers>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid BackgroundColor="{Binding SelectedMatch.LeadBorderColor}" />
+                <Grid Padding="16, 16, 16, 16" BackgroundColor="{StaticResource GridRowBackgroundColor}" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_info.png"
+                                        Android="ic_info_black_24dp.png"
+                                        WinPhone="Images/ic_info.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                    <Label Text="Detail zápasu" VerticalOptions="Center" Grid.Column="1">
+                        <Label.FontSize>
+                            <OnPlatform x:TypeArguments="x:Double"
+                      iOS="22"
+                      Android="24"
+                      WinPhone="22" />
+                        </Label.FontSize>
+                    </Label>
+                    <Image VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+                                        iOS="ic_chevron_right.png"
+                                        Android="ic_chevron_right_black_24dp.png"
+                                        WinPhone="Images/ic_chevron_right.png">
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

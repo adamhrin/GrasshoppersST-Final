@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grasshoppers.Views.RegisterPlayerPage"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             Title="Registrácia"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.BindingContext>
+        <ViewModels:PlayersViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid BackgroundColor="{StaticResource GridRowBackgroundColor}" Padding="8, 8, 8, 8" Margin="8, 8, 8, 8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image>
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="grassIcon.png"
+                                    Android="grassIcon.png"
+                                    WinPhone="Images/ic_mode_edit.png">
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.Email}"
+                           Placeholder="Email (povinné)"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.Password}"
+                           Placeholder="Heslo (povinné)"
+                           IsPassword="True"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.ConfirmPassword}"
+                           Placeholder="Potvrď heslo (povinné)"
+                           IsPassword="True"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.Firstname}"
+                           Placeholder="Meno"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.Nick}"
+                           Placeholder="Prezývka"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="6">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.Surname}"
+                           Placeholder="Priezvisko"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="7">
+                <Grid Padding="4, 4, 4, 4" BackgroundColor="{StaticResource GridRowBackgroundColor}">
+                    <Entry Text="{Binding PlayerToRegister.Number}"
+                           Placeholder="Číslo dresu"
+                           Keyboard="Numeric"/>
+                </Grid>
+            </Grid>
+            
+            <Grid Grid.Row="8" Padding="8, 8, 8, 8">
+                <Button BackgroundColor="{StaticResource RegisterBtnColor}"
+                        Command="{Binding RegisterCommand}"
+                        Text="Registrovať"/>
+            </Grid>
+
+            <Grid Grid.Row="9" Padding="8, 8, 8, 8">
+                <Button BackgroundColor="{StaticResource GridRowBackgroundColor}"
+                        Text="Už mám účet"
+                        Clicked="btnGoToLoginClicked"/>
+            </Grid>
+
+            <Grid Grid.Row="10">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"/>
+            </Grid> 
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

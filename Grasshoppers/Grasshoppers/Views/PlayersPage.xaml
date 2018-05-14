@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:Grasshoppers.ViewModels;assembly=Grasshoppers"
+             xmlns:customControls="clr-namespace:Grasshoppers.CustomControls;assembly=Grasshoppers"
+             x:Class="Grasshoppers.PlayersPage"
+             Title="Správa admin práv">
+    <ContentPage.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource"
+                    iOS="ic_group_work.png"
+                    Android="ic_group_work_black_24dp.png"
+                    WinPhone="Images/ic_group_work.png">
+        </OnPlatform>
+    </ContentPage.Icon>
+    
+    <ContentPage.BindingContext>
+        <ViewModels:PlayersViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical">
+        <!--
+        <Button Text="Vyhľadať hráča"
+                BackgroundColor="LightGray"
+                Clicked="Search_Button_Clicked"/>
+        -->
+
+        <ListView x:Name="PlayersListView"
+                  ItemsSource="{Binding PlayersList}"
+                  BackgroundColor="{StaticResource PageBackgroundColor}"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <customControls:ExtendedViewCell SelectedBackgroundColor="{StaticResource GridRowBackgroundColor}">
+                        <Grid Padding="16,8,16,8" BackgroundColor="Transparent">
+                            <Grid Grid.ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid BackgroundColor="{StaticResource MatchColor}" />
+                                <Grid Grid.Column="1"
+                                          Padding="6,6,6,6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Name}"
+                                       TextColor="Black"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource MediumFontSize}"/>
+                                    <Label Text="{Binding Number}"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Grid.Column="1"
+                                       Style="{StaticResource MediumFontSize}"/>
+                                    <Switch IsToggled="{Binding IsAdmin, Mode=TwoWay}" 
+                                            Grid.Column="2"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="{Binding IsSuperAdmin}"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </customControls:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"/>
+
+        <Button BackgroundColor="{StaticResource PageBackgroundColor}"
+                        Command="{Binding SavePlayersCommand}">
+            <Button.Image>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                                    iOS="ic_check.png"
+                                    Android="ic_check_black_24dp.png"
+                                    WinPhone="Images/ic_check.png">
+                </OnPlatform>
+            </Button.Image>
+        </Button>
+
+    </StackLayout>
+    
+</ContentPage>

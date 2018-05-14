@@ -1,0 +1,2 @@
+C:\Users\Adam\source\repos\GrasshoppersST\Grasshoppers\Grasshoppers.UWP\Grasshoppers.UWP.csproj;x86
+C:\Users\Adam\source\repos\GrasshoppersST\Grasshoppers\Grasshoppers\Grasshoppers.csproj;neutral

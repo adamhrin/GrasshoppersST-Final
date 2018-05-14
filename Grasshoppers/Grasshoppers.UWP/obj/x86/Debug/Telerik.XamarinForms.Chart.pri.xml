@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Telerik.XamarinForms.Chart" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Telerik.XamarinForms.Chart">
+				<NamedResource name="Telerik.XamarinForms.Chart.xr.xml" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Chart/Telerik.XamarinForms.Chart.xr.xml">
+					<Candidate type="Path">
+						<Value>Telerik.XamarinForms.Chart\Telerik.XamarinForms.Chart.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Resources">
+					<NamedResource name="LegendTemplateUWP.xbf" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Chart/Resources/LegendTemplateUWP.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Telerik.XamarinForms.DataControls" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Telerik.XamarinForms.DataControls">
+				<NamedResource name="Telerik.XamarinForms.DataControls.xr.xml" uri="ms-resource://Telerik.XamarinForms.DataControls/Files/Telerik.XamarinForms.DataControls/Telerik.XamarinForms.DataControls.xr.xml">
+					<Candidate type="Path">
+						<Value>Telerik.XamarinForms.DataControls\Telerik.XamarinForms.DataControls.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Resources">
+					<NamedResource name="DataControlsTemplatesUWP.xbf" uri="ms-resource://Telerik.XamarinForms.DataControls/Files/Telerik.XamarinForms.DataControls/Resources/DataControlsTemplatesUWP.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>
